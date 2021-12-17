@@ -1,0 +1,23 @@
+{
+  "name": "fullstack-todo-list",
+  "version": "1.0.0",
+  "description": "Simple To-Do List I made to learn about fullstack development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoannAsl/fullstack-todo-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoannAsl/fullstack-todo-list/issues"
+  },
+  "homepage": "https://github.com/YoannAsl/fullstack-todo-list#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
