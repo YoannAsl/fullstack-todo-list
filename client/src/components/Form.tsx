@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 const Form = () => {
     const [inputValue, setInputValue] = useState('');
@@ -7,13 +6,17 @@ const Form = () => {
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
         const newItem = { content: inputValue, isCompleted: false };
+        setInputValue('');
 
         try {
-            await axios.post('http://localhost:5000/list', newItem);
+            await fetch(`http://localhost:5000/list`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newItem),
+            });
         } catch (e) {
             console.error(e);
         }
-        setInputValue('');
     };
 
     return (
