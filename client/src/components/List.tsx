@@ -1,15 +1,30 @@
 import { useEffect, useState } from 'react';
 import Item from './Item';
 
-const List = () => {
-    const [items, setItems] = useState([]);
+interface ItemType {
+    _id: string;
+    content: string;
+    isCompleted: boolean;
+}
 
-    useEffect(() => {}, []);
+const List = () => {
+    const [items, setItems] = useState<ItemType[]>([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/list')
+            .then((res) => res.json())
+            .then((data) => setItems(data));
+    }, []);
 
     return (
         <div>
-            {items.map((item, index) => (
-                <Item key={index} text='item' id='id' />
+            {items.map((item) => (
+                <Item
+                    key={item._id}
+                    text={item.content}
+                    id={item._id}
+                    isCompleted={item.isCompleted}
+                />
             ))}
         </div>
     );

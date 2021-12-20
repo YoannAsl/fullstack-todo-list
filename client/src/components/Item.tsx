@@ -1,4 +1,10 @@
-const Item = ({ text, id }: { text: string; id: string }) => {
+interface ItemProps {
+    text: string;
+    id: string;
+    isCompleted: boolean;
+}
+
+const Item = ({ text, id, isCompleted }: ItemProps) => {
     const deleteItem = (id: string) => {
         console.log(id);
     };
