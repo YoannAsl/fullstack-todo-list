@@ -32,3 +32,16 @@ app.post('/list', async (req, res) => {
     const newItem = new Item(req.body);
     await newItem.save();
 });
+
+app.patch('/list/:itemId', async (req, res) => {
+    const { itemId } = req.params;
+    await Item.findByIdAndUpdate(itemId, req.body, {
+        runValidators: true,
+    });
+    // console.log(item);
+});
+
+app.delete('/list/:itemId', async (req, res) => {
+    const { itemId } = req.params;
+    await Item.findByIdAndDelete(itemId);
+});

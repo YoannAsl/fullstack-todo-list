@@ -2,17 +2,16 @@ interface ItemProps {
     text: string;
     id: string;
     isCompleted: boolean;
+    deleteItem: (id: string) => void;
+    editItem: (id: string, content: string) => void;
 }
 
-const Item = ({ text, id, isCompleted }: ItemProps) => {
-    const deleteItem = (id: string) => {
-        console.log(id);
-    };
-
+const Item = ({ text, id, isCompleted, deleteItem, editItem }: ItemProps) => {
     return (
         <div>
             {text}
-            <button onClick={() => deleteItem(id)}>X</button>
+            <button onClick={() => editItem(id, 'EDITED CONTENT')}>Edit</button>
+            <button onClick={() => deleteItem(id)}>Delete</button>
         </div>
     );
 };
