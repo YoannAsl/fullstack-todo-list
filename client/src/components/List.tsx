@@ -23,11 +23,29 @@ const List = () => {
     };
 
     const editItem = (id: string, content: string) => {
+        const newList = [...items];
+        const item = newList.find((item) => item._id === id);
+        item!.content = content;
+
         fetch(`http://localhost:5000/list/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ content }),
         });
+        setItems(newList);
+    };
+
+    const checkItem = (id: string) => {
+        const newList = [...items];
+        const item = newList.find((item) => item._id === id);
+        item!.isCompleted = !item!.isCompleted;
+
+        fetch(`http://localhost:5000/list/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ isCompleted: item!.isCompleted }),
+        });
+        setItems(newList);
     };
 
     return (
@@ -40,6 +58,7 @@ const List = () => {
                     isCompleted={item.isCompleted}
                     deleteItem={deleteItem}
                     editItem={editItem}
+                    checkItem={checkItem}
                 />
             ))}
         </div>
