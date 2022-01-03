@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 import Item from './Item';
-
-interface ItemType {
-    _id: string;
-    content: string;
-    isCompleted: boolean;
-}
+import { ItemType } from '../types';
 
 const List = () => {
     const [items, setItems] = useState<ItemType[]>([]);
